@@ -121,3 +121,33 @@ int CrapsMainWindow::processBet(float currentBankValue) {   //method to handle t
     }
 }
 
+std::tuple<bool, float>  CrapsMainWindow::playFirstRoll(int rollValue, float currentBank, float currentBet){
+    std::cout << rollValue << "\n";
+    switch (rollValue) {
+        case 7:
+        case 11: {
+            rollValueUI->setText(QString::fromStdString(std::to_string(rollValue)));
+            currentBank = processWin(rollValue, 1, currentBank, currentBet);
+            return std::make_tuple(true, currentBank);
+        }
+        case 2:
+        case 3:
+        case 12: {
+            rollValueUI->setText(QString::fromStdString(std::to_string(rollValue)));
+            currentBank = processLoss(rollValue, 1, currentBank, currentBet);
+            return std::make_tuple(true, currentBank);
+        }
+        default: {
+            rollingForUI->setText(QString::fromStdString(std::to_string(rollValue)));
+            return std::make_tuple(false, currentBank);
+        }
+    }
+};
+
+std::tuple<bool, float>  CrapsMainWindow::playSecondRoll(int rollValue, int previousRoll,  float currentBank, float currentBet){
+    if (rollValue == previousRoll) {
+        return std::make_tuple(true, processWin(rollValue, 2, currentBank, currentBet));
+    } else {
+        return std::make_tuple(true, processLoss(rollValue, 2, currentBank, currentBet));
+    }
+};
