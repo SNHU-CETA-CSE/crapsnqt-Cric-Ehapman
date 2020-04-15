@@ -32,11 +32,11 @@ private:
 
     std::tuple<bool, float> playFirstRoll(int rollValue, float currentBank, float currentBet);
     std::tuple<bool, float> playSecondRoll(int rollValue, int previousRoll, float currentBank, float currentBet);
-    float processWin(int rollValue, int rollNumber, float currentBank, float currentBet);
-    float processLoss(int rollValue, int rollNumber, float currentBank, float currentBet);
-    static float calculateCurrentBank(int rollValue, int rollNumber, float currentBank, float currentBet, bool wonBet);
+    float checkWin(int rollValue, int rollNumber, float currentBank, float currentBet);
+    float checkLoss(int rollValue, int rollNumber, float currentBank, float currentBet);
+    static float determineBalance(int rollValue, int rollNumber, float currentBank, float currentBet, bool wonBet);
 
-    int processBet(float currentBank);
+    int handleBet(float currentBank);
     //bool isInteger(const std::string & s);
     //void displayResults(float currentBank, float currentBet);
 
