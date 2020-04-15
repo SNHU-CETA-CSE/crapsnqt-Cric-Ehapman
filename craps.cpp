@@ -104,3 +104,20 @@ void CrapsMainWindow::rollButtonClickedHandler() {
     }
 }
 
+inline bool isInteger(const std::string & s) {      //Function to check whether or not the
+    if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
+    char * p;
+    strtol(s.c_str(), &p, 10);
+    return (*p == 0);
+}
+
+int CrapsMainWindow::processBet(float currentBankValue) {   //method to handle the users bet
+    int attemptedBet;
+    attemptedBet = userBetUI->value();
+    if (float(attemptedBet) <= currentBankValue) {
+        return attemptedBet;
+    } else {
+        return attemptedBet;
+    }
+}
+
