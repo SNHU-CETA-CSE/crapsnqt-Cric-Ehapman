@@ -1,11 +1,11 @@
 #include <iostream>
 #include <stdio.h>
-//#include <QApplication>
-//#include <QWidget>
-//#include <QGridLayout>
-//#include <QPushButton>
-//#include <QLabel>
-//#include <QPixmap>
+#include <QApplication>
+#include <QWidget>
+#include <QGridLayout>
+#include <QPushButton>
+#include <QLabel>
+#include <QPixmap>
 
 #include "die.h"
 #include "craps.h"
@@ -53,7 +53,7 @@ void CrapsMainWindow::updateUI() {
     lossCountUI->setText(QString::fromStdString(std::to_string(lossCount)));
     if (currentBankValue <= 0){
         rollButton->setEnabled(false);
-        rollButton->setText(QString::fromStdString("BANKRUPT!"));
+        rollButton->setText(QString::fromStdString("Not Enough Money"));
     }
 
 }
@@ -96,7 +96,7 @@ void CrapsMainWindow::rollButtonClickedHandler() {
                 rollCompleted = false;
                 currentBankValue = localBank;
                 rollValueUI->setText(QString::fromStdString(std::to_string(previousRoll)));
-                rollButton->setText(QString::fromStdString("ROLL!"));
+                rollButton->setText(QString::fromStdString("Roll Once More"));
             }
         }
         printStringRep();
